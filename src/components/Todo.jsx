@@ -9,6 +9,14 @@ function Todo(props) {
     setShowModal(true);
   };
 
+  const handleClose = () => {
+    setShowModal(false);
+  };
+
+  const handleConfirm = () => {
+    setShowModal(false);
+  };
+
   return (
     <div className='card'>
       <h2>{props.text}</h2>
@@ -19,8 +27,8 @@ function Todo(props) {
       </div>
       {showModal && (
         <>
-          <Modal />
-          <Backdrop />
+          <Modal onCancel={handleClose} onConfirm={handleConfirm} />
+          <Backdrop onClick={handleClose} />
         </>
       )}
     </div>
