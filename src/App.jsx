@@ -1,23 +1,15 @@
-import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
-import Todo from './components/Todo';
+import { Routes, Route } from 'react-router-dom';
+import AllMeetupsPage from './pages/AllMeetups';
+import NewMeetupPage from './pages/NewMeetup';
+import FavoritesPage from './pages/Favorites';
 
 function App() {
   return (
-    <BrowserRouter basename={import.meta.env.DEV ? '/' : '/react-in-action/'}>
-      <Routes>
-        <Route
-          path='/'
-          element={
-            <div>
-              <h1>My Todos</h1>
-              <Todo text='Learn React' />
-              <Todo text='Read' />
-              <Todo text='Study' />
-            </div>
-          }
-        />
-      </Routes>
-    </BrowserRouter>
+    <Routes>
+      <Route path='/' element={<AllMeetupsPage />} />
+      <Route path='/new-meetup' element={<NewMeetupPage />} />
+      <Route path='/favorites' element={<FavoritesPage />} />
+    </Routes>
   );
 }
 
