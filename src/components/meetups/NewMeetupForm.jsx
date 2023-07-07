@@ -1,13 +1,14 @@
 import Card from '../ui/Card';
 import styles from './NewMeetupForm.module.css';
 
-function NewMeetupForm() {
+function NewMeetupForm(props) {
   const handleSubmit = (event) => {
     event.preventDefault();
 
     const formData = new FormData(event.target);
     const formProps = Object.fromEntries(formData);
-    console.log(formData, formProps);
+
+    props.onAddMeetup(formProps);
   };
 
   return (

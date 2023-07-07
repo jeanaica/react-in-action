@@ -6,6 +6,8 @@ function NewMeetupPage() {
       method: 'POST',
       body: JSON.stringify(meetupData),
       headers: { 'Content-Type': 'application/json' },
+    }).then(() => {
+      history.replaceState('/');
     });
   };
 
