@@ -11,15 +11,9 @@ const firebaseApp = () => initializeApp(getFirebaseConfig());
 const analytics = (app) => getAnalytics(app);
 
 const setupAppCheck = (app) => {
-  let appCheckToken = import.meta.env.VITE_FIREBASE_DEBUG_TOKEN;
-  if (import.meta.env.MODE === 'development') {
-    self.FIREBASE_APPCHECK_DEBUG_TOKEN = true;
-  } else {
-    appCheckToken = import.meta.env.VITE_RECAPTCHA_SITE_KEY;
-  }
   // Initialize with ReCaptchaV3Provider for production
   initializeAppCheck(app, {
-    provider: new ReCaptchaV3Provider(`${appCheckToken}`),
+    provider: new ReCaptchaV3Provider(import.meta.env.VITE_RECAPTCHA_SITE_KEY),
     isTokenAutoRefreshEnabled: true, // Set to true to allow auto-refresh.
   });
 };
