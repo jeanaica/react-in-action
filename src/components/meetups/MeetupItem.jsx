@@ -1,7 +1,8 @@
-import Card from '../ui/Card';
-import styles from './MeetupItem.module.css';
-import FavoritesContext from '../../store/favorites-context';
 import { useContext } from 'react';
+
+import Card from '../ui/Card';
+import FavoritesContext from '../../store/favorites-context';
+import styles from './MeetupItem.module.css';
 
 function MeetupItem(props) {
   const favoritesCtx = useContext(FavoritesContext);
@@ -12,7 +13,13 @@ function MeetupItem(props) {
     if (itemIsFavorite) {
       favoritesCtx.removeFavorite(props.id);
     } else {
-      favoritesCtx.addFavorite(props);
+      favoritesCtx.addFavorite({
+        id: props.id,
+        title: props.title,
+        description: props.description,
+        image: props.image,
+        address: props.address,
+      });
     }
   };
 
